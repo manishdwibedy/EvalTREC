@@ -9,8 +9,9 @@ def getFilesInDirectory(directory=constant.DATA_DIR):
     """
     files = []
 
-    for root, dirs, files in os.walk(directory, topdown=False):
-        for name in files:
-            files.append(os.path.join(root, name))
+    for rootDirectory, directories, fileList in os.walk(directory):
+        for file in fileList:
+            if not file.startswith('.'):
+                files.append(os.path.join(rootDirectory, file))
 
     return files
