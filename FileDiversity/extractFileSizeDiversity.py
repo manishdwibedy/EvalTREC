@@ -16,7 +16,6 @@ def getFileSizeInfo():
     for mime in mimeInfo:
         filename = mime.filename
         filesize = FileSizeDiversityExtractionObj.extractSize(filename)
-        file_size = FileSize.FileSize(mime, filesize)
 
         file_size_obj = {
             'id': URL(mime.filename),
