@@ -1,6 +1,7 @@
 import FileSizeDiversityExtraction, FileSize
 from util import constant
 from Solr import connection, index
+import URL_Shortner
 
 def getFileSizeInfo():
     """
@@ -18,6 +19,7 @@ def getFileSizeInfo():
         file_size = FileSize.FileSize(mime, filesize)
 
         file_size_obj = {
+            'id': URL(mime.filename),
             'filename': mime.filename,
             'mime': mime.mimeType,
             'filesize': filesize
@@ -26,6 +28,8 @@ def getFileSizeInfo():
 
     return file_size_list
 
+def URL(filename):
+    return URL_Shortner.hashID(filename)
 if __name__ == '__main__':
     file_size_JSON = getFileSizeInfo()
     conn = connection.get_connection()
