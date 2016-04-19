@@ -10,5 +10,8 @@ if __name__ == '__main__':
 
     for mime in mimeInfo:
         filename = mime.filename
+        filesize = FileSizeDiversityExtractionObj.extractSize(filename)
+        file_size = FileSize.FileSize(mime, filesize)
+        file_size_list.append(file_size)
 
-        FileSize = FileSize(mime, 2)
+    pass
