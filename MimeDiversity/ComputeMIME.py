@@ -21,10 +21,10 @@ class GetMIMEInformation(object):
         # Looping over all the files
         for file in files:
             # Computing the mime type
-            mimeTpye = detector.from_file(file)
+            mimeTpye = str(detector.from_file(file))
 
             # Creating the MIME dataobject
-            mimeObj = MimeType(file, mimeTpye)
+            mimeObj = MimeType.MIME(file, mimeTpye)
 
             # Appending to the list
             MIMEList.append(mimeObj)
