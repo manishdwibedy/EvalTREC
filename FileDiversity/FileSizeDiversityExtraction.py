@@ -1,5 +1,5 @@
 from MimeDiversity import ComputeMIME
-from util import utility
+import os
 
 class FileSizeDiversityExtraction(object):
 
@@ -13,4 +13,7 @@ class FileSizeDiversityExtraction(object):
         return mimeInfo
 
     def extractSize(self, filename):
-        pass
+        try:
+            return os.path.getsize(filename)
+        except OSError:
+            return -1
