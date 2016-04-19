@@ -3,4 +3,6 @@ from util import utility
 
 if __name__ == '__main__':
     mime = ComputeMIME.GetMIMEInformation(utility.constant.DATA_DIR)
-    mime.computeMIME()
+    mimeInfo = mime.computeMIME()
+
+    print mimeInfo
