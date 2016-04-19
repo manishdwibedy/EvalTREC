@@ -10,7 +10,7 @@ class FileSizeDiversityExtraction(object):
         mime = ComputeMIME.GetMIMEInformation(self.directory)
 
         mimeInfo = mime.computeMIME()
-        pass
+        return mimeInfo
 
     def extractSize(self, filename):
         pass
