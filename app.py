@@ -34,10 +34,9 @@ if __name__ == '__main__':
 
     if commuteMIME:
         ComputeMIME.GetMIMEInformation().addMime()
-        pass
+
     if computeFileSize:
         size = ComputeFileSize.FileSize().addSize()
-        pass
 
     if commuteParser:
         parser = Parser().addMetaDataSize()
