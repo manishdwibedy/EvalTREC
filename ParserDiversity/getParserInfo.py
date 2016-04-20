@@ -5,15 +5,18 @@ import sys
 
 class Parser(object):
 
-    def __init__(self, directory):
-        self.directory = directory
+    def __init__(self):
+        pass
 
     def getMetaData(self):
-        MIMEList = []
-
-        tikaObj = getTika.Tika()
+        # Getting the files whose meta data would be computed
         response = MIME_Core().query('*:*')
         files = response.result.dict['response']['docs']
+
+        # Getting the tika object
+        tikaObj = getTika.Tika()
+
+        # Computing the meta data
         for file in files:
             filelocation = file['filename'][0]
             metadata = tikaObj.getMetaData(filelocation)
