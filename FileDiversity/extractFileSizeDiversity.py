@@ -1,6 +1,5 @@
 import FileSizeDiversityExtraction, FileSize
 from util import constant
-from Solr import connection, index
 import URL_Shortner
 
 def getFileSizeInfo():
@@ -34,9 +33,3 @@ def URL(filename):
     :return: the short URL
     """
     return URL_Shortner.hashID(filename)
-
-if __name__ == '__main__':
-    file_size_JSON = getFileSizeInfo()
-    conn = connection.get_connection()
-    index.index(conn, constant.SOLR_CORE, file_size_JSON)
-
