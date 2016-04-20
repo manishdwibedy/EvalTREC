@@ -6,9 +6,13 @@ from SolrData import mimeData
 
 computeFileSize = False
 getDataFromSolr = True
+resetSolrData = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
+
+    if resetSolrData:
+        mime.delete('*:*')
 
     # Loading the files into solr
     mimeData.MIME(DATA_DIR).loadData()
