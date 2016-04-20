@@ -28,7 +28,13 @@ def getFileSizeInfo():
     return file_size_list
 
 def URL(filename):
+    """
+    Would return the shortened URL for the document
+    :param filename: the file getting a short URL
+    :return: the short URL
+    """
     return URL_Shortner.hashID(filename)
+
 if __name__ == '__main__':
     file_size_JSON = getFileSizeInfo()
     conn = connection.get_connection()
