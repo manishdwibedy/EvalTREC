@@ -23,6 +23,9 @@ class Parser(object):
             metadata = tikaObj.getMetaData(filelocation)
             file['metadata_size'] = sys.getsizeof(metadata)
 
+            content = tikaObj.getContent(filelocation)
+            file['content_size'] = sys.getsizeof(content)
+
             metadataList.append(file)
 
         return metadataList
