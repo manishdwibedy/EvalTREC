@@ -1,4 +1,4 @@
-from tika import detector
+from tika import detector, parser
 
 class Tika(object):
 
@@ -14,3 +14,15 @@ class Tika(object):
         mime_type = detector.from_file(filename)
 
         return str(mime_type)
+
+    def getMetaData(self, filename):
+        parsed = parser.from_file(filename)
+        return parsed["metadata"]
+
+    def getContent(self, filename):
+        parsed = parser.from_file(filename)
+        return parsed["content"]
+
+    def getParse(self, filename):
+        parsed = parser.from_file(filename)
+        return parsed
