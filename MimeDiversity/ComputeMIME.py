@@ -1,33 +1,37 @@
 from util import utility
 from tika import detector
-from MimeDiversity import MimeType
+from Solr.MIME import MIME_Core
 
 class GetMIMEInformation(object):
 
-    def __init__(self, directory):
-        self.directory = directory
+    def __init__(self):
+        self.SOLR = MIME_Core()
 
     def computeMIME(self):
         """
-        Computation of the mime type of all the files
+        Computation of the mime type of all the files in the solr core
         :return: the list of MimeTpye object
         """
-        MIMEList = []
 
-        # Getting all the files in the directory
-        files = utility.getFilesInDirectory(self.directory)
-        print 'Got', str(len(files)), 'file(s).'
+        ContentTypeList = []
+        # Getting the files whose meta data would be computed
+        response = MIME_Core().query('*:*')
+        files = response.result.dict['response']['docs']
 
         # Looping over all the files
         for file in files:
             # Computing the mime type
-            mimeTpye = str(detector.from_file(file))
+            contentType = str(detector.from_file(file['file'][0]))
 
-            # Creating the MIME dataobject
-            mimeObj = MimeType.MIME(file, mimeTpye)
+            file['metadata'] = contentType
 
             # Appending to the list
-            MIMEList.append(mimeObj)
+            ContentTypeList.append(file)
 
         # Returning the list
-        return MIMEList
+        return ContentTypeList
+
+    def addMime(self):
+        mime = self.computeMIME()
+
+        self.SOLR.index(mime)
