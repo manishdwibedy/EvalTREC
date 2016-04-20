@@ -1,9 +1,18 @@
 from FileDiversity import extractFileSizeDiversity
+
+# SOLR Mime Core
 from Solr.MIME import MIME_Core
-from ParserDiversity.getParserInfo import Parser
+
+# Importing the data directory
 from util.constant import DATA_DIR
+
+# Parser Module
+from ParserDiversity.getParserInfo import Parser
+
+# The files to be loaded into solr
 from SolrData import mimeData
 
+# Various Flags to control which module would run
 computeFileSize = False
 getDataFromSolr = True
 resetSolrData = True
