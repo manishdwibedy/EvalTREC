@@ -5,17 +5,11 @@ import sys
 
 class Parser(object):
 
-    def __init__(self, directory, readFromSolr):
+    def __init__(self, directory):
         self.directory = directory
-        self.readFromSolr = readFromSolr
 
     def getMetaData(self):
         MIMEList = []
-
-        if not self.readFromSolr:
-            # Reading all the files in the directory
-            files = utility.getFilesInDirectory(self.directory)
-            print 'Got', str(len(files)), 'file(s).'
 
         tikaObj = getTika.Tika()
         response = MIME_Core().query('*:*')
