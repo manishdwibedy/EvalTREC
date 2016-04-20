@@ -6,6 +6,7 @@ from Solr.MIME import MIME_Core
 # Importing the data directory
 from util.constant import DATA_DIR
 
+from MimeDiversity import ComputeMIME
 # Parser Module
 from ParserDiversity.getParserInfo import Parser
 
@@ -16,6 +17,7 @@ from SolrData import mimeData
 computeFileSize = False
 getDataFromSolr = True
 resetSolrData = True
+commuteMIME = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
@@ -26,6 +28,9 @@ if __name__ == '__main__':
     # Loading the files into solr
     mimeData.MIME(DATA_DIR).loadData()
 
+    if commuteMIME:
+        ComputeMIME.GetMIMEInformation().addMime()
+        pass
     if computeFileSize:
         file_size = extractFileSizeDiversity.getFileSizeInfo()
         mime.index(file_size)
