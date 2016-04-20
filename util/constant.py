@@ -1,6 +1,6 @@
 
 # Directory where the data is present
-DATA_DIR = '/Volumes/Manish/CSCI_599/polar_full_dump/ee'
+DATA_DIR = '/Users/manishdwibedy/PycharmProjects/MIME/final/x-perl/'
 
 # Solr Constants
 SOLR_HOSTNAME = 'localhost'
