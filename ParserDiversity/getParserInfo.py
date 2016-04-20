@@ -26,7 +26,11 @@ class Parser(object):
             content = tikaObj.getContent(filelocation)
             file['content_size'] = sys.getsizeof(content)
 
+            parsers = metadata['X-Parsed-By']
+            file['parsers'] = parsers
+
             metadataList.append(file)
+
 
         return metadataList
 
