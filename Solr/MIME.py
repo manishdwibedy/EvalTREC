@@ -1,7 +1,7 @@
 from util import constant
 from solrcloudpy import SolrConnection
 
-class SolrConnection(object):
+class MIME_Core(object):
 
     def __init__(self):
         """
