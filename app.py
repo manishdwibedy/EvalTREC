@@ -15,11 +15,13 @@ from SolrData import mimeData
 
 from FileDiversity import ComputeFileSize
 
+# Flag to control clearing the solr index
+resetSolrData = True
+
 # Various Flags to control which module would run
 computeFileSize = True
-getDataFromSolr = True
-resetSolrData = True
 commuteMIME = True
+commuteParser = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
@@ -37,5 +39,5 @@ if __name__ == '__main__':
         size = ComputeFileSize.FileSize().addSize()
         pass
 
-    parser = Parser(DATA_DIR, getDataFromSolr)
-    parser.getMetaData()
+    if commuteParser:
+        parser = Parser().addMetaDataSize()

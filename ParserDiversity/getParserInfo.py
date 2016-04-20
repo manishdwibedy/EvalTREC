@@ -6,9 +6,10 @@ import sys
 class Parser(object):
 
     def __init__(self):
-        pass
+        self.SOLR = MIME_Core()
 
     def getMetaData(self):
+        metadataList = []
         # Getting the files whose meta data would be computed
         response = MIME_Core().query('*:*')
         files = response.result.dict['response']['docs']
@@ -18,8 +19,15 @@ class Parser(object):
 
         # Computing the meta data
         for file in files:
-            filelocation = file['filename'][0]
+            filelocation = file['file'][0]
             metadata = tikaObj.getMetaData(filelocation)
-            print metadata
-            print sys.getsizeof(metadata)
-            pass
+            file['metadata_size'] = sys.getsizeof(metadata)
+
+            metadataList.append(file)
+
+        return metadataList
+
+    def addMetaDataSize(self):
+        metadatasize = self.getMetaData()
+
+        self.SOLR.index(metadatasize)
