@@ -34,6 +34,13 @@ class MIME_Core(object):
         else:
             return self.connection[self.collection].search({'q':query,'rows': rows})
 
+    def queryAll(self):
+        num_rows_response = self.connection[self.collection].search({'q': '*:*', 'rows': 0})
+        num_rows = num_rows_response.result.dict['response']['numFound']
+
+
+        return self.query('*:*', num_rows)
+
     def delete(self, query):
         """
         Deleting the documents that match the query.
