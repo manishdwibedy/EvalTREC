@@ -16,7 +16,7 @@ from SolrData import mimeData
 from FileDiversity import ComputeFileSize
 
 # Flag to control clearing the solr index
-resetSolrData = True
+resetSolrData = False
 
 # Various Flags to control which module would run
 computeFileSize = True
@@ -29,8 +29,9 @@ if __name__ == '__main__':
     if resetSolrData:
         mime.delete('*:*')
 
-    # Loading the files into solr
-    mimeData.MIME(DATA_DIR).loadData()
+    if resetSolrData:
+        # Loading the files into solr
+        mimeData.MIME(DATA_DIR).loadData()
 
     if commuteMIME:
         ComputeMIME.GetMIMEInformation().addMime()
