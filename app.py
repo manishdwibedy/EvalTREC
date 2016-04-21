@@ -19,7 +19,7 @@ from FileDiversity import ComputeFileSize
 resetSolrData = False
 
 # Various Flags to control which module would run
-computeFileSize = True
+computeFileSize = False
 commuteMIME = False
 commuteParser = True
 
