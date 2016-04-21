@@ -15,7 +15,7 @@ class MIME(object):
         for file in files:
             fileObj = {
                 'file' : file,
-                'id': URL_Shortner.hashID(file)
+                'shortURL': URL_Shortner.hashID(file)
             }
             solr_data.append(fileObj)
 
