@@ -15,7 +15,7 @@ class GetMIMEInformation(object):
 
         ContentTypeList = []
         # Getting the files whose meta data would be computed
-        response = MIME_Core().query('*:*')
+        response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
         # Looping over all the files
