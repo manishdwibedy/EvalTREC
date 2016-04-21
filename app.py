@@ -20,7 +20,7 @@ resetSolrData = False
 
 # Various Flags to control which module would run
 computeFileSize = True
-commuteMIME = True
+commuteMIME = False
 commuteParser = True
 
 if __name__ == '__main__':
