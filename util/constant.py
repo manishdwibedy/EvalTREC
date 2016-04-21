@@ -1,6 +1,6 @@
 
 # Directory where the data is present
-DATA_DIR = '/Users/manishdwibedy/PycharmProjects/MIME/final/x-perl/'
+DATA_DIR = '/Users/manishdwibedy/PycharmProjects/MIME/final/'
 
 # Solr Constants
 SOLR_HOSTNAME = 'localhost'
