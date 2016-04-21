@@ -11,7 +11,7 @@ class Parser(object):
     def getMetaData(self):
         metadataList = []
         # Getting the files whose meta data would be computed
-        response = MIME_Core().query('*:*')
+        response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
         # Getting the tika object
@@ -20,14 +20,23 @@ class Parser(object):
         # Computing the meta data
         for file in files:
             filelocation = file['file'][0]
-            metadata = tikaObj.getMetaData(filelocation)
-            file['metadata_size'] = sys.getsizeof(metadata)
+            parsed = tikaObj.getParse(filelocation)
 
-            content = tikaObj.getContent(filelocation)
-            file['content_size'] = sys.getsizeof(content)
+            if 'metadata' in parsed:
+                metadata = parsed['metadata']
+                file['metadata_size'] = sys.getsizeof(metadata)
+                parsers = metadata['X-Parsed-By']
+                file['parsers'] = parsers
+            else:
+                file['metadata_size'] = -1
 
-            parsers = metadata['X-Parsed-By']
-            file['parsers'] = parsers
+            if 'content' in parsed:
+                content = parsed['content']
+                file['content_size'] = sys.getsizeof(content)
+            else:
+                file['content_size'] = -1
+
+
 
             metadataList.append(file)
 
