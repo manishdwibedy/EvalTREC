@@ -12,7 +12,7 @@ class FileSize(object):
         FileSizeList = []
 
         # Getting the files whose size would be computed
-        response = MIME_Core().query('*:*')
+        response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
 
