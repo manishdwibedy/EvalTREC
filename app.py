@@ -24,7 +24,7 @@ from FileDiversity import ComputeFileSize
 overrideFlag = True
 
 # Flag to control clearing the solr index
-resetSolrData = False
+resetSolrData = True
 
 # Various Flags to control which module would run
 computeFileSize = False
