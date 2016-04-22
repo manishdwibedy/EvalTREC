@@ -191,17 +191,18 @@ def computeTagRatioFile(filename):
     contentData = []
     for index in range(0, len(smoothedArray) ):
         if smoothedArray[index] > mean:
-            contentData.append(HTMLdata[index])
+            contentData.append(striphtml(HTMLdata[index]))
 
-    extractMeasurement(contentData)
 
-    return extractMeasurement(contentData)
+    if len(contentData) > 0:
+        return extractMeasurement(contentData)
+    else:
+        return None
 
 def extractMeasurement(contentData):
     indexes = []
     measurement = RegexTester.MeasurementRegex()
     for line in contentData:
-        line = striphtml(line)
         measurementData = measurement.getMeasurement(line)
         if measurementData:
             indexes.append(measurementData)
