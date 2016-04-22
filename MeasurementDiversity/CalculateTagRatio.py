@@ -104,7 +104,11 @@ def calculateTTRMean(TRRArray):
     for TRRValue in TRRArray:
         sum += TRRValue
 
-    return sum/len(TRRArray)
+    total = len(TRRArray)
+    if total != 0:
+        return sum/total
+    else:
+        return 0
 
 def smooteTRRArray(TRRArray):
     """
@@ -191,7 +195,7 @@ def computeTagRatioFile(filename):
 
     extractMeasurement(contentData)
 
-    return TRRArray, contentData
+    return extractMeasurement(contentData)
 
 def extractMeasurement(contentData):
     indexes = []
@@ -201,7 +205,7 @@ def extractMeasurement(contentData):
         measurementData = measurement.getMeasurement(line)
         if measurementData:
             indexes.append(measurementData)
-    pass
+    return indexes
 
 
 
