@@ -17,6 +17,10 @@ class Parser(object):
         # Getting the tika object
         tikaObj = getTika.Tika()
 
+        parsedFiles = 0
+        totalFiles = len(files)
+        utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
         # Computing the meta data
         for file in files:
             filelocation = file['file'][0]
@@ -36,9 +40,9 @@ class Parser(object):
             else:
                 file['content_size'] = -1
 
-
-
             metadataList.append(file)
+            parsedFiles += 1
+            utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
 
         return metadataList
