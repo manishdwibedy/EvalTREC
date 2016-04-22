@@ -19,6 +19,10 @@ from SolrData import mimeData
 
 from FileDiversity import ComputeFileSize
 
+
+# override flag to override any flag set below
+overrideFlag = True
+
 # Flag to control clearing the solr index
 resetSolrData = False
 
@@ -32,25 +36,24 @@ commuteMeasurement = True
 if __name__ == '__main__':
     mime = MIME_Core()
 
-    if resetSolrData:
+    if overrideFlag or resetSolrData:
         mime.delete('*:*')
 
-    if resetSolrData:
+    if overrideFlag or resetSolrData:
         # Loading the files into solr
         mimeData.MIME(DATA_DIR).loadData()
 
-    if commuteMIME:
+    if overrideFlag or commuteMIME:
         ComputeMIME.GetMIMEInformation().addMime()
 
-    if computeFileSize:
+    if overrideFlag or computeFileSize:
         size = ComputeFileSize.FileSize().addSize()
 
-    if commuteParser:
+    if overrideFlag or commuteParser:
         parser = Parser().addMetaDataSize()
 
-    if commuteLanguage:
+    if overrideFlag or commuteLanguage:
         GetLanguageInformation().addLanguage()
 
-
-    if commuteMeasurement:
+    if overrideFlag or commuteMeasurement:
         GetMeasurementInformation().addMeasurement()
