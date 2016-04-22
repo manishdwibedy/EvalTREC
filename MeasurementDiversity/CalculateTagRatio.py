@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import numpy
 import requests
 import HTMLParser
-
+import RegexTester
 url = 'http://localhost:9998/tika'
 
 
@@ -195,37 +195,14 @@ def computeTagRatioFile(filename):
 
 def extractMeasurement(contentData):
     indexes = []
+    measurement = RegexTester.MeasurementRegex()
     for line in contentData:
         line = striphtml(line)
-        if num_there(line):
-            words = line.split(' ')
-            indexes.extend(number_index(words))
+        measurementData = measurement.getMeasurement(line)
+        if measurementData:
+            indexes.append(measurementData)
     pass
 
-def number_index(words):
-    number_index_list = []
-    for index in range(0, len(words)):
-        word = words[index]
-        if num_there(word):
-            number_index_list.append(index)
-
-    return number_index_list
-
-def getNeighbouringWords(words, indexes):
-    neighbouring_words = []
-    index_map = {}
-    for index in indexes:
-        index_map[index-2] = 1
-        index_map[index-1] = 1
-        index_map[index] = 1
-        index_map[index+1] = 1
-        index_map[index+2] = 1
-
-    for index, word in enumerate(words):
-        if index in index_map:
-            neighbouring_words.append(word)
-
-    return neighbouring_words
 
 
 def num_there(string):
