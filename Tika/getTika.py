@@ -1,7 +1,9 @@
 from tika import detector, parser
+import tika
+
 import sys
 import os
-
+from tika import language
 
 class Tika(object):
 
@@ -37,3 +39,15 @@ class Tika(object):
         sys.stdout = sys.__stdout__
 
         return parsed
+
+    def getLanguage(self, filename):
+        # To avoid printing to the console
+        sys.stdout = open(os.devnull, "w")
+
+        # Getting the language for the document
+        language = tika.language.from_file(filename)
+
+        # To avoid printing to the console
+        sys.stdout = sys.__stdout__
+
+        return language
