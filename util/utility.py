@@ -31,7 +31,6 @@ def printProgress (iteration, total, prefix = '', suffix = '', decimals = 2, bar
     filledLength    = int(round(barLength * iteration / float(total)))
     percents        = round(100.00 * (iteration / float(total)), decimals)
     bar             = '#' * filledLength + '-' * (barLength - filledLength)
-    sys.stdout.write('%s [%s] %s%s %s\r' % (prefix, bar, percents, '%', suffix)),
-    sys.stdout.flush()
+    print '%s [%s] %s%s %s\r' % (prefix, bar, percents, '%', suffix)
     if iteration == total:
         print("\n")
