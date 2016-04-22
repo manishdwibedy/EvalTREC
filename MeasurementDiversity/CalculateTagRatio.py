@@ -5,9 +5,23 @@ The Text-To-Tag Ratio (TTR) is the basis by which we analyze a Web page in prepa
 from bs4 import BeautifulSoup
 import numpy
 import requests
-import os
+import HTMLParser
 
 url = 'http://localhost:9998/tika'
+
+
+import re
+def striphtml(string):
+    """
+    Remove HTML tags and decode HTML character
+    :param string: HTML string
+    :return: string, tags removed
+    """
+    p = re.compile(r'<.*?>')
+    string = p.sub('', string)
+    h= HTMLParser.HTMLParser()
+    string =  h.unescape(string)
+    return string
 
 def calculateLineTagRatio(line):
     """
@@ -83,7 +97,7 @@ def calculateFileTagRatio(filename):
     for line in strippedHTMLdata:
         TTRArray.append(calculateLineTagRatio(line))
 
-    return TTRArray
+    return strippedHTMLdata, TTRArray
 
 def calculateTTRMean(TRRArray):
     sum = 0
@@ -162,18 +176,65 @@ def generateHTML(filename):
     return response.text
 
 def computeTagRatioFile(filename):
-    TRRArray = calculateFileTagRatio(filename)
-    print calculateTTRMean(TRRArray)
+    HTMLdata, TRRArray = calculateFileTagRatio(filename)
+    mean =  calculateTTRMean(TRRArray)
 
-    print TRRArray
-    print len(TRRArray)
+    smoothedArray = TRRArray
+    # smoothedArray = smooteTRRArray(TRRArray)
 
-    smoothedArray = smooteTRRArray(TRRArray)
-    print smoothedArray
-    print len(smoothedArray)
+    std = numpy.std(smoothedArray)
 
-    mean = numpy.std(smoothedArray)
-    print mean
+    contentData = []
+    for index in range(0, len(smoothedArray) ):
+        if smoothedArray[index] > mean:
+            contentData.append(HTMLdata[index])
 
-    meanArray = [mean] * len(smoothedArray)
-    print meanArray
+    extractMeasurement(contentData)
+
+    return TRRArray, contentData
+
+def extractMeasurement(contentData):
+    indexes = []
+    for line in contentData:
+        line = striphtml(line)
+        if num_there(line):
+            words = line.split(' ')
+            indexes.extend(number_index(words))
+    pass
+
+def number_index(words):
+    number_index_list = []
+    for index in range(0, len(words)):
+        word = words[index]
+        if num_there(word):
+            number_index_list.append(index)
+
+    return number_index_list
+
+def getNeighbouringWords(words, indexes):
+    neighbouring_words = []
+    index_map = {}
+    for index in indexes:
+        index_map[index-2] = 1
+        index_map[index-1] = 1
+        index_map[index] = 1
+        index_map[index+1] = 1
+        index_map[index+2] = 1
+
+    for index, word in enumerate(words):
+        if index in index_map:
+            neighbouring_words.append(word)
+
+    return neighbouring_words
+
+
+def num_there(string):
+    for char in string:
+        if char.isdigit():
+            return True
+    return False
+    # return any(i.isdigit() for i in s)
+
+if __name__ == '__main__':
+    filename = '/Users/manishdwibedy/PycharmProjects/MIME/final/atom+xml/D5EE01268FEB9E28ED7AEFF1B8D379C9E89B9B3D410EBE271133D01A3BE9F9AB'
+    computeTagRatioFile(filename)
