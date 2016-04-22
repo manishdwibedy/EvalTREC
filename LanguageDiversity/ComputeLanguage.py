@@ -18,6 +18,11 @@ class GetLanguageInformation(object):
         response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
+        parsedFiles = 0
+        totalFiles = len(files)
+        utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
+
         tika = Tika()
         # Looping over all the files
         for file in files:
@@ -31,10 +36,13 @@ class GetLanguageInformation(object):
             # Appending to the list
             LanguageList.append(file)
 
+            parsedFiles += 1
+            utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
         # Returning the list
         return LanguageList
 
-    def addMime(self):
+    def addLanguage(self):
         language = self.computeLanguage()
 
         self.SOLR.index(language)
