@@ -46,14 +46,6 @@ def calculateLineTagRatio(line):
             # child is HML content
             if isinstance(tag.contents[0], basestring):
                 non_tag_data += tag.contents[0]
-            else:
-                pass
-                # while isinstance(tag.contents, list):
-                #     tags.append(tag.name)
-                #     tag = tag.contents[0].contents[0]
-                #     if isinstance(tag, basestring):
-                #         non_tag_data += tag
-                #         break
 
     # Compute the number of tags seen
     tag_count = len(tags)
@@ -230,8 +222,3 @@ def num_there(string):
 if __name__ == '__main__':
     filename = '/Users/manishdwibedy/PycharmProjects/MIME/final/atom+xml/D5EE01268FEB9E28ED7AEFF1B8D379C9E89B9B3D410EBE271133D01A3BE9F9AB'
     # computeTagRatioFile(filename)
-
-    # Testing calculation of line tag ratio
-    # line = '<html><head><title>Hey!</title></head><html>'
-    # line1 = '<title>Testing</title>'
-    # print calculateLineTagRatio(line)
