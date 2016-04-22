@@ -27,4 +27,6 @@ class MIME(object):
             readFiles += 1
             utility.printProgress(readFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
+        print '\n\nStarting to index..'
         self.MIME.index(solr_data)
+        print '\nIndexed!'
