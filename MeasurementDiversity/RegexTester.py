@@ -7,7 +7,7 @@ class MeasurementRegex():
         Creates the regex to be used to get measurements
         :return:
         """
-        self.regex = r"(\d+(\.\d+)?)(\s*([a-zA-Z]+))(\s*(\w[a-zA-Z]+))?"
+        self.regex = re.compile(r"(\d+(\.\d+)?)(\s*([a-zA-Z]+))(\s*(\w[a-zA-Z]+))?")
 
     def isMeasurement(self, string):
         """
