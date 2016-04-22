@@ -1,4 +1,5 @@
 import os
+import sys
 from util import constant
 
 def getFilesInDirectory(directory=constant.DATA_DIR):
@@ -15,3 +16,22 @@ def getFilesInDirectory(directory=constant.DATA_DIR):
                 files.append(os.path.join(rootDirectory, file))
 
     return files
+
+# Reference : http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
+# Print iterations progress
+def printProgress (iteration, total, prefix = '', suffix = '', decimals = 2, barLength = 100):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+    """
+    filledLength    = int(round(barLength * iteration / float(total)))
+    percents        = round(100.00 * (iteration / float(total)), decimals)
+    bar             = '#' * filledLength + '-' * (barLength - filledLength)
+    sys.stdout.write('%s [%s] %s%s %s\r' % (prefix, bar, percents, '%', suffix)),
+    sys.stdout.flush()
+    if iteration == total:
+        print("\n")
