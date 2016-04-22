@@ -46,6 +46,6 @@ if __name__ == '__main__':
         parser = Parser().addMetaDataSize()
 
     if commuteLanguage:
-        GetLanguageInformation().computeLanguage()
+        GetLanguageInformation().addLanguage()
 
 
