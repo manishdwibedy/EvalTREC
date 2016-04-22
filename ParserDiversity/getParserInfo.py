@@ -17,6 +17,8 @@ class Parser(object):
         # Getting the tika object
         tikaObj = getTika.Tika()
 
+        print 'Adding metadata_size, content_size and parsers to the dataset'
+
         parsedFiles = 0
         totalFiles = len(files)
         utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
@@ -49,5 +51,6 @@ class Parser(object):
 
     def addMetaDataSize(self):
         metadatasize = self.getMetaData()
-
+        print '\n\nStarting to index the sizes of the dataset'
         self.SOLR.index(metadatasize)
+        print '\nIndexed!'

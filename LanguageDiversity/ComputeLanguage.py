@@ -18,6 +18,7 @@ class GetLanguageInformation(object):
         response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
+        print 'Adding language to the dataset'
         parsedFiles = 0
         totalFiles = len(files)
         utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
@@ -44,5 +45,6 @@ class GetLanguageInformation(object):
 
     def addLanguage(self):
         language = self.computeLanguage()
-
+        print '\n\nStarting to index the languages of the dataset'
         self.SOLR.index(language)
+        print '\nIndexed!'

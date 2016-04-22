@@ -18,6 +18,12 @@ class GetMIMEInformation(object):
         response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
+        fileIndex = 0
+        totalFiles = len(files)
+
+        print 'Adding metadata to the dataset'
+        utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
         # Looping over all the files
         for file in files:
             # Computing the mime type
@@ -28,10 +34,14 @@ class GetMIMEInformation(object):
             # Appending to the list
             ContentTypeList.append(file)
 
+            fileIndex += 1
+            utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
         # Returning the list
         return ContentTypeList
 
     def addMime(self):
         mime = self.computeMIME()
 
+        print '\n\nStarting to index the metadata of the files'
         self.SOLR.index(mime)
+        print '\nIndexed!'

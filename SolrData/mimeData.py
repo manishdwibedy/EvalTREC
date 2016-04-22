@@ -15,7 +15,7 @@ class MIME(object):
         readFiles = 0
         totalFiles = len(files)
 
-        print 'Adding files to SOLR'
+        print 'Loading the dataset to SOLR'
         utility.printProgress(readFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
         for file in files:
@@ -27,6 +27,6 @@ class MIME(object):
             readFiles += 1
             utility.printProgress(readFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
-        print '\n\nStarting to index..'
+        print '\n\nStarting to index the dataset..'
         self.MIME.index(solr_data)
         print '\nIndexed!'

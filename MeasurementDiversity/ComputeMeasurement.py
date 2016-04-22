@@ -19,6 +19,7 @@ class GetMeasurementInformation(object):
         response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
+        print 'Adding measurements to the dataset'
         parsedFiles = 0
         totalFiles = len(files)
         utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
@@ -49,5 +50,6 @@ class GetMeasurementInformation(object):
 
     def addMeasurement(self):
         measurement = self.computeMeasurement()
-
+        print '\n\nStarting to index the measurements of the dataset'
         self.SOLR.index(measurement)
+        print '\nIndexed!'

@@ -15,6 +15,12 @@ class FileSize(object):
         response = MIME_Core().queryAll()
         files = response.result.dict['response']['docs']
 
+        fileIndex = 0
+        totalFiles = len(files)
+
+        print 'Adding filesize to the dataset'
+        utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
 
         # Looping over all the files
         for file in files:
@@ -26,9 +32,13 @@ class FileSize(object):
 
             FileSizeList.append(file)
 
+            fileIndex += 1
+            utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
         return FileSizeList
 
     def addSize(self):
         size = self.extractSize()
-
+        print '\n\nStarting to index the filesize of the dataset'
         self.SOLR.index(size)
+        print '\nIndexed!'
