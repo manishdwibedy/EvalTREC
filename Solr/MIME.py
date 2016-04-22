@@ -1,5 +1,6 @@
 from util import constant
 from solrcloudpy import SolrConnection
+from solrcloudpy.utils import SolrException
 
 class MIME_Core(object):
 
@@ -19,8 +20,12 @@ class MIME_Core(object):
         :param documents: the documents to be indexed
         :return:
         """
-        self.connection[self.collection].add(documents)
-        self.connection[self.collection].commit()
+        try:
+            self.connection[self.collection].add(documents)
+            self.connection[self.collection].commit()
+        except SolrException:
+            print 'Error'
+
 
     def query(self,query,rows=-1):
         """
