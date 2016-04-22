@@ -10,8 +10,10 @@ from MimeDiversity import ComputeMIME
 # Parser Module
 from ParserDiversity.getParserInfo import Parser
 
+# Language Module
 from LanguageDiversity.ComputeLanguage import GetLanguageInformation
 
+from MeasurementDiversity.ComputeMeasurement import GetMeasurementInformation
 # The files to be loaded into solr
 from SolrData import mimeData
 
@@ -24,7 +26,8 @@ resetSolrData = False
 computeFileSize = False
 commuteMIME = False
 commuteParser = False
-commuteLanguage = True
+commuteLanguage = False
+commuteMeasurement = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
@@ -49,3 +52,5 @@ if __name__ == '__main__':
         GetLanguageInformation().addLanguage()
 
 
+    if commuteMeasurement:
+        GetMeasurementInformation().addMeasurement()
