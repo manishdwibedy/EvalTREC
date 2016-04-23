@@ -29,14 +29,8 @@ class Tika(object):
         return parsed["content"]
 
     def getParse(self, filename):
-        # To avoid printing to the console
-        sys.stdout = open(os.devnull, "w")
-
         # Getting the parsed content
         parsed = parser.from_file(filename)
-
-        # To avoid printing to the console
-        sys.stdout = sys.__stdout__
 
         return parsed
 
