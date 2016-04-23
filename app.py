@@ -1,3 +1,6 @@
+import sys
+
+
 # SOLR Mime Core
 from Solr.MIME import MIME_Core
 
@@ -13,28 +16,33 @@ from ParserDiversity.getParserInfo import Parser
 # Language Module
 from LanguageDiversity.ComputeLanguage import GetLanguageInformation
 
+# Measurement Module
 from MeasurementDiversity.ComputeMeasurement import GetMeasurementInformation
+
 # The files to be loaded into solr
 from SolrData import mimeData
 
 from FileDiversity import ComputeFileSize
 
-
 # override flag to override any flag set below
-overrideFlag = True
+overrideFlag = False
 
 # Flag to control clearing the solr index
-resetSolrData = True
+resetSolrData = False
 
 # Various Flags to control which module would run
 computeFileSize = False
 commuteMIME = False
 commuteParser = False
 commuteLanguage = False
-commuteMeasurement = True
+commuteMeasurement = False
 
 if __name__ == '__main__':
     mime = MIME_Core()
+
+    orig_stdout = sys.stdout
+    f = file('app.log', 'w')
+    sys.stdout = f
 
     if overrideFlag or resetSolrData:
         mime.delete('*:*')
@@ -57,3 +65,6 @@ if __name__ == '__main__':
 
     if overrideFlag or commuteMeasurement:
         GetMeasurementInformation().addMeasurement()
+
+    sys.stdout = orig_stdout
+    f.close()
