@@ -1,0 +1,10 @@
+Range Query for file size
+
+http://localhost:8983/solr/mime/select?q=*%3A*&rows=0&wt=json&indent=true&facet=true&facet=true&facet.range=size&f.size.facet.range.start=0&f.size.facet.range.end=100000000&f.size.facet.range.gap=1000000
+
+
+To get valid measurements
+query measurements:[* TO *]
+-measurements:N.A.
+
+http://localhost:8983/solr/mime/select?q=measurements%3A%5B*+TO+*%5D%0A-measurements%3AN.A.&rows=2000&fl=measurements&wt=json&indent=true
