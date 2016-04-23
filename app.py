@@ -35,7 +35,7 @@ computeFileSize = False
 commuteMIME = False
 commuteParser = False
 commuteLanguage = False
-commuteMeasurement = False
+commuteMeasurement = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
