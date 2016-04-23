@@ -16,7 +16,7 @@ class GetMeasurementInformation(object):
 
         MeasurementList = []
         # Getting the files whose meta data would be computed
-        response = MIME_Core().queryAll()
+        response = MIME_Core().queryAll('-measurements:["" TO *]')
         files = response.result.dict['response']['docs']
 
         print 'Adding measurements to the dataset'
@@ -24,7 +24,7 @@ class GetMeasurementInformation(object):
         totalFiles = len(files)
         utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
-
+        gotMeasurement = False
         tika = Tika()
         # Looping over all the files
         for file in files:
@@ -35,8 +35,9 @@ class GetMeasurementInformation(object):
 
             if measurements:
                 file['measurements'] = measurements
+                gotMeasurement = True
             else:
-                file['measurements'] = 'N.A.'
+                file['measurements'] = ['N.A.']
 
             # Appending to the list
             MeasurementList.append(file)
@@ -44,6 +45,12 @@ class GetMeasurementInformation(object):
             parsedFiles += 1
             if parsedFiles % 30 == 0:
                 utility.printProgress(parsedFiles, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
+
+            # Wait till you get the results from 1000 files
+            # then index into the solr core
+            if parsedFiles % 1000 == 0:
+                self.SOLR.index(MeasurementList)
+                MeasurementList = []
 
         # Returning the list
         return MeasurementList
