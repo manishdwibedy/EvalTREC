@@ -202,13 +202,20 @@ def computeTagRatioFile(filename):
         return None
 
 def extractMeasurement(contentData):
-    indexes = []
+    measurement_temp_storage = []
     measurement = RegexTester.MeasurementRegex()
     for line in contentData:
         measurementData = measurement.getMeasurement(line)
         if measurementData:
-            indexes.append(measurementData)
-    return indexes
+            measurement_temp_storage.append(measurementData)
+
+    measurements = []
+    for lineData in measurement_temp_storage:
+        output = []
+        for measurementLine in lineData:
+            output.append(measurementLine['measure'] + '<<>>' + measurementLine['unit'])
+        measurements.append(';;'.join(output))
+    return measurements
 
 
 
