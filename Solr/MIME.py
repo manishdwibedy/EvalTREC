@@ -27,7 +27,7 @@ class MIME_Core(object):
             print 'Error'
 
 
-    def query(self,query,rows=-1):
+    def query(self,query,rows=-1, fields=''):
         """
         Query the core for documents
         :param query: the query string
@@ -37,14 +37,16 @@ class MIME_Core(object):
         if rows == -1:
             return self.connection[self.collection].search({'q':query})
         else:
-            return self.connection[self.collection].search({'q':query,'rows': rows})
+            if len(fields) == 0:
+                return self.connection[self.collection].search({'q':query,'rows': rows})
+            else:
+                return self.connection[self.collection].search({'q':query,'rows': rows, 'fl': fields})
 
-    def queryAll(self, query='*:*'):
+    def queryAll(self, query='*:*', fields=''):
         num_rows_response = self.connection[self.collection].search({'q': query, 'rows': 0})
         num_rows = num_rows_response.result.dict['response']['numFound']
 
-
-        return self.query('*:*', num_rows)
+        return self.query(query, num_rows, fields)
 
     def delete(self, query):
         """
