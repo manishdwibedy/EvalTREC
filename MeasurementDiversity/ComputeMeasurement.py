@@ -51,6 +51,10 @@ class GetMeasurementInformation(object):
             if parsedFiles % 1000 == 0:
                 self.SOLR.index(MeasurementList)
                 MeasurementList = []
+        else:
+            self.SOLR.index(MeasurementList)
+            MeasurementList = []
+
 
         # Returning the list
         return MeasurementList
