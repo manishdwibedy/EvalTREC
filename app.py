@@ -19,6 +19,9 @@ from LanguageDiversity.ComputeLanguage import GetLanguageInformation
 # Measurement Module
 from MeasurementDiversity.ComputeMeasurement import GetMeasurementInformation
 
+# Open NLP NER Module
+from NERDiversity.OpenNLP_NER import ExtractNER
+
 # The files to be loaded into solr
 from SolrData import mimeData
 
@@ -35,7 +38,8 @@ computeFileSize = False
 commuteMIME = False
 commuteParser = False
 commuteLanguage = False
-commuteMeasurement = True
+commuteMeasurement = False
+commuteOPEN_NER = True
 
 if __name__ == '__main__':
     mime = MIME_Core()
@@ -66,5 +70,7 @@ if __name__ == '__main__':
     if overrideFlag or commuteMeasurement:
         GetMeasurementInformation().addMeasurement()
 
+    if overrideFlag or commuteOPEN_NER:
+        ExtractNER().addNER()
     sys.stdout = orig_stdout
     f.close()
