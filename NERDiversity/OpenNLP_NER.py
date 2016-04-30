@@ -28,7 +28,7 @@ class ExtractNER(object):
         print 'Adding metadata to the dataset'
         utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
-        foundNER = False
+        # foundNER = False
 
         # Looping over all the files
         for file in files:
@@ -37,7 +37,7 @@ class ExtractNER(object):
 
             # Found NER
             if len(NER) > 0:
-                foundNER = True
+                # foundNER = True
                 for NERclass, NER_wordList in NER.iteritems():
                     file['OPEN_NLP_'+NERclass] = NER_wordList
             else:
@@ -49,8 +49,8 @@ class ExtractNER(object):
             fileIndex += 1
             utility.printProgress(fileIndex, totalFiles, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
 
-            if foundNER:
-            # if len(NER_List) % 1 == 0:
+            # if foundNER:
+            if len(NER_List) % 1000 == 0:
                 self.SOLR.index(NER_List)
                 NER_List = []
         # Returning the list
@@ -84,21 +84,22 @@ class ExtractNER(object):
                                     params={'filename': headers['filename']})
             json_output = response.text
 
-
-        obj = json.loads(json_output)
-
         NER_data = {}
-        for key, value in obj.iteritems():
-            key = str(key)
-            if key.startswith('NER_'):
-                NER_concepts = []
+        try:
+            obj = json.loads(json_output)
 
-                for NER_concept in value:
-                    NER_concept = str(NER_concept)
-                    NER_concepts.append(NER_concept)
+            for key, value in obj.iteritems():
+                key = str(key)
+                if key.startswith('NER_'):
+                    NER_concepts = []
 
-                NER_data[key[4:]] = NER_concepts
+                    for NER_concept in value:
+                        NER_concept = str(NER_concept)
+                        NER_concepts.append(NER_concept)
 
+                    NER_data[key[4:]] = NER_concepts
+        except ValueError:
+            pass
         return NER_data
 
 if __name__ == "__main__":
