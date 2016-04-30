@@ -50,17 +50,8 @@ class MeasurementAnalysis(object):
             for unit, measures in measurement_units.iteritems():
                 output =  '%(unit)s;%(measures)s\n' % {"unit": unit, "measures": measures}
                 testfile.write(output)
-                # print 'Unit is : ', unit
-                # print 'Found measures like %(measures)s.' % {"measures": measures}
-                # print 'Found measures like : ' ','.join(measures)
             pass
 
-
-        # with open('test1.csv', 'wb') as testfile:
-        # csv_writer = csv.writer(testfile)
-        # for unit, measures in measurement_units.iteritems():
-        # for y in range(length):
-        #     csv_writer.writerow([x[y] for x in hello])
 
 if __name__ == '__main__':
     analysis = MeasurementAnalysis()
