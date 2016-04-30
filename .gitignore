@@ -1,5 +1,8 @@
 
 
+# Ignoring the tika-server JAR file
+/NERDiversity/tika-server-1.12.jar
+
 
 #########
 ## Python
