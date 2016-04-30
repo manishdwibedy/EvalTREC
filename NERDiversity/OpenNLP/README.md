@@ -5,7 +5,8 @@ Starting as TIKA server
 
 PROJECT_HOME = /Users/manishdwibedy/PycharmProjects/EvalTREC
 
-cd PROJECT_HOME/NERDiversity/OpenNLP
+cd PPROJECT_HOME
+cd NERDiversity/OpenNLP
 
 java -classpath ./models/:../tika-server-1.12.jar org.apache.tika.server.TikaServerCli --config=./tika-config.xml
 
