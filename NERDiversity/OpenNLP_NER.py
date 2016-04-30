@@ -19,7 +19,7 @@ class ExtractNER(object):
 
         NER_List = []
         # Getting the files whose meta data would be computed
-        response = MIME_Core().queryAll()
+        response = MIME_Core().queryAll('-OPEN_NLP:* OR -OPEN_NLP_DATE:* OR -OPEN_NLP_LOCATION:* OR -OPEN_NLP_MONEY:* OR -OPEN_NLP_ORGANIZATION:* OR -OPEN_NLP_PERSON:* OR -OPEN_NLP_TIME:* OR -OPEN_NLP_PERCENT:*')
         files = response.result.dict['response']['docs']
 
         fileIndex = 0
