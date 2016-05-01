@@ -4,6 +4,12 @@
 
 # Ignoring the tika-server JAR file
 /NERDiversity/tika-server-1.12.jar
+/NERDiversity/tika-server-1.13-SNAPSHOT.jar
+
+
+# Ignoring the tika-app JAR file
+/NERDiversity/tika-app-1.12.jar
+/NERDiversity/tika-app-1.13-SNAPSHOT.jar
 
 
 #########
