@@ -26,7 +26,6 @@ class Visulization(object):
             jsonObj = {}
             for size in self.sizes:
                 query = 'metadata:%s AND size:[%s]' % (mime, size)
-                # metadata:*plain* AND size:[* TO 10000]
                 response = MIME_Core().queryAll(query=query)
                 files = response.result.dict['response']['docs']
                 jsonObj[self.size_mapping[size]] = [len(files)]
@@ -34,14 +33,7 @@ class Visulization(object):
 
             out_file = open('data/'+mime[mime.index('/')+1:]+'.json',"w")
 
-            json_str = json.dumps(jsonObj)
-            # Writing JSON data
             json.dump(jsonObj,out_file, indent=4)
-            pass
-            # with open('data/'+mime[mime.index('/')+1:]+'.json', 'w') as f:
-            #      json.dump(json_str, f)
-        pass
-
 
 
     def addSize(self):
