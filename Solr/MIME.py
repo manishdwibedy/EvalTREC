@@ -1,5 +1,5 @@
 from util import constant
-from solrcloudpy import SolrConnection
+from solrcloudpy import SolrConnection, SearchOptions
 from solrcloudpy.utils import SolrException
 
 class MIME_Core(object):
@@ -41,6 +41,12 @@ class MIME_Core(object):
                 return self.connection[self.collection].search({'q':query,'rows': rows})
             else:
                 return self.connection[self.collection].search({'q':query,'rows': rows, 'fl': fields})
+
+    def facetQuery(self, facet_field, query='*:*'):
+        se = SearchOptions()
+        se.commonparams.q(query)
+        se.facetparams.field(facet_field)
+        return self.connection[self.collection].search(se)
 
     def queryAll(self, query='*:*', fields=''):
         num_rows_response = self.connection[self.collection].search({'q': query, 'rows': 0})
