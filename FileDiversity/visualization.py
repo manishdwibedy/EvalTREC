@@ -1,6 +1,6 @@
 from util import utility
 from Solr.MIME import MIME_Core
-
+import json
 
 class Visulization(object):
 
@@ -31,7 +31,17 @@ class Visulization(object):
                 files = response.result.dict['response']['docs']
                 jsonObj[self.size_mapping[size]] = [len(files)]
             mime_size_diversity[mime] = jsonObj
+
+            out_file = open('data/'+mime[mime.index('/')+1:]+'.json',"w")
+
+            json_str = json.dumps(jsonObj)
+            # Writing JSON data
+            json.dump(jsonObj,out_file, indent=4)
+            pass
+            # with open('data/'+mime[mime.index('/')+1:]+'.json', 'w') as f:
+            #      json.dump(json_str, f)
         pass
+
 
 
     def addSize(self):
