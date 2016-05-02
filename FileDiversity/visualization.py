@@ -24,6 +24,7 @@ class Visulization(object):
         mime_size_diversity = {}
         for mime in mimeList:
             jsonObj = {}
+            print mime[mime.index('/')+1:]
             for size in self.sizes:
                 query = 'metadata:%s AND size:[%s]' % (mime, size)
                 response = MIME_Core().queryAll(query=query)
