@@ -17,8 +17,9 @@ class ExtractNER(object):
         """
 
         NER_List = []
-        # Getting the files whose meta data would be computed
-        response = MIME_Core().queryAll()
+
+        # Getting the files where NLTK computation has not been done
+        response = MIME_Core().queryAll('-NLTK:* OR -NLTK_NAMES:*')
         files = response.result.dict['response']['docs']
 
         fileIndex = 0
