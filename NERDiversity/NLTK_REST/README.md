@@ -37,10 +37,9 @@ cd NERDiversity/NLTK_Rest
 
 java -Dner.impl.class=org.apache.tika.parser.ner.nltk.NLTKNERecogniser -classpath .:../tika-server-1.13-SNAPSHOT.jar org.apache.tika.server.TikaServerCli --config=tika-config.xml
 
-
 -----------------
 Testing with CURL
 -----------------
 
-curl -T ./input.txt -H "Content-Disposition: attachment; filename=0A0C0478C62A4BF29F47B5783CBD2CEB12DCF27E5BCD56A4871AFF84FB0C5DD2" -H "Accept: application/json" http://localhost:9998/meta
+curl -T ./1 -H "Content-Disposition: attachment; filename=1" -H "Accept: application/json" http://localhost:9998/meta
 
