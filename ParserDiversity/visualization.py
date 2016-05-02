@@ -26,6 +26,7 @@ class Visulization(object):
         for mime in mimeList:
             metadata_size = {}
             content_size = {}
+            parser_count = {}
             print mime[mime.index('/')+1:]
 
             for size in self.sizes:
@@ -35,13 +36,21 @@ class Visulization(object):
 
                 avg_content_size = 0
                 avg_metadata_size = 0
+
                 for file in files:
                     avg_metadata_size += file['metadata_size'][0]
                     avg_content_size += file['content_size'][0]
 
+                    if 'parsers' in file:
+                        for parser in file['parsers']:
+                            if parser in parser_count:
+                                parser_count[parser] += 1
+                            else:
+                                parser_count[parser] = 1
                 if len(files) != 0:
                     metadata_size[self.size_mapping[size]] = [avg_metadata_size / len(files)]
                     content_size[self.size_mapping[size]] = [avg_content_size / len(files)]
+
                 else:
                     metadata_size[self.size_mapping[size]] = 0
                     content_size[self.size_mapping[size]] = 0
@@ -50,6 +59,11 @@ class Visulization(object):
 
             out_file = open('data/content/'+mime[mime.index('/')+1:]+'.json',"w")
             json.dump(content_size,out_file, indent=4)
+
+            out_file = open('data/parsers/'+mime[mime.index('/')+1:]+'.json',"w")
+            json.dump(parser_count,out_file, indent=4)
+
+            pass
 
 
 if __name__ == '__main__':
