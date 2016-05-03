@@ -48,11 +48,14 @@ class MIME_Core(object):
         se.facetparams.field(facet_field)
         return self.connection[self.collection].search(se)
 
-    def queryAll(self, query='*:*', fields=''):
+    def queryAll(self, query='*:*', fields='', rows = 0):
         num_rows_response = self.connection[self.collection].search({'q': query, 'rows': 0})
         num_rows = num_rows_response.result.dict['response']['numFound']
 
-        return self.query(query, num_rows, fields)
+        if rows != 0:
+            return self.query(query, num_rows, fields)
+        else:
+            return self.query(query, rows, fields)
 
     def delete(self, query):
         """
