@@ -61,6 +61,7 @@ class Visulization(object):
                                     old_data['min'] = quantity
                                 old_data['count'] += old_data['count'] + 1
                                 old_data['sum'] += old_data['sum'] + float(quantity)
+
                                 pass
                             else:
                                 data = {
@@ -105,11 +106,24 @@ class Visulization(object):
                     # No measurement data
                     pass
             measurements_diveristy[mime] = measurement_json
+
+            final_output = {}
+            for unit, unit_data in measurement_json.iteritems():
+                try:
+                    data = {
+                        'min': unit_data['min'],
+                        'max': unit_data['max'],
+                        'mean': float(unit_data['sum']) / float(unit_data['count'])
+                    }
+                    final_output[unit] = data
+                except:
+                    # print unit_data
+                    pass
             print non_units
 
             out_file = open('data/'+mime[mime.index('/')+1:]+'.json',"w")
 
-            json.dump(measurement_json,out_file, indent=4)
+            json.dump(final_output,out_file, indent=4)
 
     def validateUnit(self, unit):
 
