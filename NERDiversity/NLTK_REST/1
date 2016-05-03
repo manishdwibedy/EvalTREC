@@ -1,0 +1,233 @@
+
+<html>
+	<head>
+		<title>Solar System Exploration: Solar System 101: Saturn</title>
+		<link rel="stylesheet" type="text/css" href="../styles_css/sse_style1.css" />
+		<link rel="stylesheet" type="text/css" href="../styles_css/kids.css" />
+		
+			<script>
+			if (window.name != 'contentpanel') {
+				// redirect to index page and tell it to open an iframe with this page in it
+				window.location.href = ('../kids/index.cfm?Filename=saturn_kids');
+			}
+
+			if ( top !== self && top.sseframe ) {
+				// disable the auto resizing by setting top.sseframe.autosize to false
+				top.sseframe.autosize = false;
+
+				// set width & height simultaneously with dimension(width, height)
+				top.sseframe.dimension(937, 659);
+			}
+			
+			<!-- Hide from older browsers
+
+			function startPopUp(desktopURL, w, h) {
+			  var desktop = 
+			  window.open(desktopURL, "_blank","scrollbars=no,resizable=yes,width=" + w + ",height=" + h);
+				self.name = "main";
+			}
+
+			// stop hiding -->
+			</script>
+			
+			
+<style type="text/css">
+#scrollbar1 { width:927px; /*margin: 20px 0 10px;*/ /*margin: 10px 0 10px;*/ margin: 7px 0 10px; }
+#scrollbar1 .viewport { width:907px; /*height:574px;*/ height:574px; overflow: hidden; position: relative; }
+#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#scrollbar1 .scrollbar{ /*background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0;*/ position: relative; background-position: 0 0; float: right; width: 15px; }
+#scrollbar1 .track { /*background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%;*/ background-color: #F3F3F3;  
+height:659px; width:13px; position: relative; /*padding: 0 1px;*/ padding: 1px 1px;
+border-radius: 0.5em; border-width:1px; border-color:#D9DBDE;
+ }
+#scrollbar1 .thumb { /*background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; */
+/*background-color: #858585; */
+background-color: #B9B9B9; border-radius: 5px; border-color:white; border-width:1px; margin-top:2px; 
+height: 20px; 
+/*width: 25px; */
+width: 11px;
+cursor: pointer; overflow: hidden; position: absolute; top: 0; 
+/*left: -5px;*/
+left: 2px;
+ }
+#scrollbar1 .thumb .end { 
+/*background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; */
+overflow: hidden; height: 5px; width: 25px; }
+#scrollbar1 .disable { display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+</style>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tinyscrollbar.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+
+	$(window).bind('load', function(){
+		$('#scrollbar1').tinyscrollbar();	
+	});
+</script>
+
+			
+			<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+			</script>
+			<script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-4391123-16");
+			pageTracker._trackPageview();
+			</script>
+			<script src="../js/omniture.js"></script>
+			<script language="JavaScript" type="text/javascript"><!--
+			/* You may give each page an identifying name, server, and channel on the next lines. */
+			s.pageName="Solar System 101: Saturn"
+			s.channel="kids"
+
+			/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+			var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+		
+	</head>
+	
+	<body>
+	
+		<div style="width: 937px; height: 659px; overflow: hidden;">
+			<div class="kidspageheaderlarge">
+				<span class="kidspagetitlelarge">Saturn</span>
+			</div>
+			
+
+<style type="text/css">
+	body { /*font-family:Arial, Helvetica, Sans-Serif; font-size:0.75em; color:#000;*/}
+	#socialNetworking { float:right;margin-bottom:-30px; /*margin-top:-10px;*/ margin-top:-11px; /*margin-right:42px;*/ /*margin-right:52px;*/ margin-right:8px; }
+	.desc { color:#6b6b6b;}
+	.desc a {color:#0092dd;}
+	
+	.dropdown dd, .dropdown dt, .dropdown ul { margin:0px; padding:0px; }
+	.dropdown dd { position:relative; }
+	.dropdown dt { text-aligh:right; }
+	.dropdown a, .dropdown a:visited { /*color:#816c5b;*/  color:black; text-decoration:none; outline:none;}
+	.dropdown a:hover { /* color:#5d4617; */ color:black; }
+	.dropdown dt a:hover, .dropdown dt a:focus { /*color:#5d4617; border: 1px solid #5d4617;*/}
+	.dropdown dt a { /*background:#e4dfcb url(arrow.png) no-repeat scroll right center; */
+					display:block; /*padding-right:20px;*/
+					/*border:1px solid #d4ca9a;*/ /*width:150px;*/ width:180px;}
+	.dropdown dt a span {cursor:pointer; display:block; padding:5px;}
+	.dropdown dd ul { /*background:#e4dfcb none repeat scroll 0 0; background:#ffffff none repeat scroll 0 0;*/
+					 background-color:#ffffff;
+					 /*border:1px solid #d4ca9a; */ border:1px solid #A5BFE0;	border-radius: 0.3em;															 
+					 color:#C5C0B0; display:none;
+					 left:0px; padding:1px 0px 2px 0px; position:absolute; z-index:9; top:2px; width:auto; /*min-width:170px;*/ min-width:180px; list-style:none;}
+	.dropdown span.value { display:none;}
+	.dropdown dd ul li { float:left; width:55%; }
+	.dropdown dd ul li.odd { width:45%; }
+	.dropdown dd ul li a { padding:5px; display:block; font-size:12px; }
+	.dropdown dd ul li a:hover { /*background-color:#d0c9af;*/ background-color:#F3F3F3; }
+	
+	.dropdown img.snIcon { border:none; /*vertical-align:middle; margin-left:10px;*/ margin-right:4px; }
+	.flagvisibility { display:none;}
+	
+	#socialNetworking #result {}
+	
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".dropdown img.flag").addClass("flagvisibility");
+
+		$(".dropdown dt a").click(function() {
+			$(".dropdown dd ul").toggle();
+		});
+					
+		$(".dropdown dd ul li a").click(function() {
+			var text = $(this).html();
+			$(".dropdown dt a span").html(text);
+			$(".dropdown dd ul").hide();
+			//$("#result").html("Selected value is: " + getSelectedValue("sample"));
+		});
+					
+		function getSelectedValue(id) {
+			return $("#" + id).find("dt a span.value").html();
+		}
+
+		$(document).bind('click', function(e) {
+			var $clicked = $(e.target);
+			if (! $clicked.parents().hasClass("dropdown"))
+				$(".dropdown dd ul").hide();
+		});
+
+
+		$("#flagSwitcher").click(function() {
+			$(".dropdown img.flag").toggleClass("flagvisibility");
+		});
+	});
+</script>
+
+<div id="socialNetworking">
+	<dl id="sample" class="dropdown">
+		<dt><a href="javascript:void(0)" style="text-align:right;"><img src="../kids/images/socialNetworking-select.png" width="45" height="20" hspace="0" vspace="0" border="0" align="center" alt="share"><span style="display:none;"></span></a></dt>
+		<dd>
+			<ul>
+				<li><a href="http://www.facebook.com/pages/Our-Solar-System/79209882917?ref=ts" target="_blank"><img align="left" class="snIcon" src="../kids/images/socialNetworking-icon-fb.png" alt="Facebook" hspace="0" vspace="0" border="0" width="18" height="18" />Facebook<span class="value">FB</span></a></li>
+				<li class="odd"><a href="http://www.flickr.com/photos/oursolarsystem/" target="_blank">Flickr<img  align="left" class="snIcon" src="../kids/images/socialNetworking-icon-fl.png" alt="Flickr" hspace="0" vspace="0" border="0" width="18" height="18" /><span class="value">FL</span></a></li>
+				<li><a href="http://twitter.com/#!/NASASolarSystem" target="_blank">Twitter<img  align="left" class="snIcon" src="../kids/images/socialNetworking-icon-tw.png" alt="Twitter" hspace="0" vspace="0" border="0" width="18" height="18" /><span class="value">TW</span></a></li>
+				<li class="odd"><a href="http://itunes.apple.com/us/podcast/nasacast-whats-up-video-podcasts/id252873558?uo=6" target="_blank">iTunes<img  align="left" class="snIcon" src="../kids/images/socialNetworking-icon-it.png" alt="iTunes" hspace="0" vspace="0" border="0" width="18" height="18" /><span class="value">IT</span></a></li>
+				<li><a href="http://www.youtube.com/user/NASASolarSystem" target="_blank">YouTube<img  align="left" class="snIcon" src="../kids/images/socialNetworking-icon-yt.png" alt="YouTube" hspace="0" vspace="0" border="0" width="18" height="18" /><span class="value">YT</span></a></li>
+				<li class="odd"><a href="../kids/saturn_kids.cfm?Print=1" target="_blank">Print<img  align="left" class="snIcon" src="../kids/images/socialNetworking-icon-pr.png" alt="Print" hspace="0" vspace="0" border="0" width="18" height="18" /><span class="value">PR</span></a></li>
+			</ul>
+		</dd>
+	</dl>
+	<span id="result"></span>
+</div>
+<br clear="all">
+
+			
+			<div id="scrollbar1" >
+				<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+				<div class="viewport">
+					 <div class="overview">
+                     <table height="200"><tr><td>
+			
+						
+						<div class="kidstext" style="padding-left: 30px; padding-right: 30px; padding-bottom: 30px;">
+						<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" ALIGN="center"><TR><TD><table align="center" border="0" cellpadding="0" cellspacing="0" WIDTH="726"><tr><td style="padding-bottom:13px; background: url('../kids/images/contentImage-bottom.png') no-repeat right bottom;"><table bgcolor="BE5E00" border="0" cellpadding="2" cellspacing="0"><tr><td><table class="insetdefault" align="center" border="0" cellpadding="0" cellspacing="0" WIDTH="722"><tr><td width="1"><img src="../images/spacer.gif" alt="" height="1" width="1"></td><td WIDTH="720"><img src="../images/spacer.gif" alt="" height="1" WIDTH="720"></td><td width="1"><img src="../images/spacer.gif" alt="" height="1" width="1"></td></tr><tr><td width="1"><img src="../images/spacer.gif" alt="" height="1" width="1"></td><td align="center" WIDTH="720"><a href="../multimedia/display.cfm?IM_ID=3924"><img src="../images/Saturn_720.jpg" alt="Kid's illustration of the Cassini spacecraft flying past Saturn and its moons." border="0"  width="720"hspace="0" vspace="0"></a></td><td width="1"><img src="../images/spacer.gif" alt="" height="1" width="1"></td></tr><tr><td WIDTH="722" colspan="3"><img src="../images/spacer.gif" alt="" height="1" WIDTH="722"></td></tr><tr><td WIDTH="722" colspan="3" style="background-color:12385B;border-style:solid;border-color:BE5E00;border-width:2px 0 0 0;"><div class="l2imagecaption" style="color:B1DBFF;font-size:12px;padding:2px;">Saturn isn't the only planet with rings. But they are the prettiest.</div></td></tr></table></td></tr></table></td></tr><tr><td><img src="../images/spacer.gif" alt="" height="1" width="1"></td></tr></table></TD></TR><TR><TD><IMG SRC="../images/spacer.gif" WIDTH="1" HEIGHT="5" ALT=""></TD></TR></TABLE>
+<p class="Title">Jewel of the Solar System</p>
+
+<P>Saturn is the sixth planet from our <a href="../kids/sun_kids.cfm" class="kidslink">sun</a>. It is called the "jewel of the solar system" because of its beautiful rings. It is the second largest planet in our <a href="../kids/solarsys_kids.cfm" class="kidslink">solar system</a>.</P>
+
+<TABLE ALIGN="right" BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="5"><IMG SRC="../images/spacer.gif" WIDTH="10" HEIGHT="1" ALT=""></TD><TD WIDTH="4" CLASS="l2peoplequotetable"><IMG SRC="../images/spacer.gif" WIDTH="4" HEIGHT="1" ALT=""></TD><TD CLASS="l2peoplequoteright" ALIGN="right"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD WIDTH="10"><IMG SRC="../images/spacer.gif" WIDTH="10" HEIGHT="1" ALT=""></TD><TD CLASS="l2peoplequote"><a href="../multimedia/display.cfm?IM_ID=3983" class="l2peoplequote">SATURN CHALLENGE<BR>How do you think Saturn's<BR>rings formed? Why doesn't<BR>the ice melt?</a></TD><TD WIDTH="10"><IMG SRC="../images/spacer.gif" WIDTH="10" HEIGHT="1" ALT=""></TD></TR></TABLE></TD><TD><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="FFFFFF"><TR><TD><a href="../multimedia/display.cfm?IM_ID=3983"><img src="../images/default-saturn.jpg" alt="Color image of Saturn" border="0" hspace="0" vspace="0"></a></TD></TR></TABLE></TD></TR></TABLE>
+
+<P>Saturn is named for the Roman god of agriculture.</P>
+
+<P><B>WHAT'S IT LIKE ON SATURN?</B><br>
+Saturn is a lot like <a href="../kids/jupiter_kids.cfm" class="kidslink">Jupiter</a>. It is made up mostly of gas, including hydrogen, helium and methane. It doesn't have a solid surface.</P>
+
+<P>Saturn has clouds stripes and storms like Jupiter, but they are harder to see. The clouds we see are mostly yellow and white. One scientist compared them to a lemon meringue pie. A person -- or spacecraft -- dropping through the icy clouds would be crushed from the pressure -- the same kind you feel when you dive into the deep end of a pool.  The pressure is so powerful it squeezes gas into liquid. Even a metal spacecraft would be smashed. It is not a nice place for humans.</P>
+
+<P>Saturn has the most spectacular rings of any planet in the solar system. They are made of billions of small chunks of ice and rock. The chunks can be as small as a grain of sugar or as big as a house. Scientists think the rings formed when moons and other objects were torn apart by Saturn's powerful gravity. The rings would look mostly white if you looked at them from the cloud tops of Saturn.</P>
+
+<P>Saturn has at least 53 moons. In 2004, a probe from Earth landed on <a href="../planets/profile.cfm?Object=Sat_Titan" class="kidslink">Titan</a>, the solar system's second largest moon.<br>
+<HR>
+<B>More:</B><br>
+<ul><li><a href="../multimedia/gallery.cfm?Category=Kids&Object=Saturn" class="kidslink">See more kids' drawings</a>.</li>
+<li><a href="../multimedia/downloads/Saturn_card.pdf" class="kidslink">Get the Saturn trading card</a>.</li>
+<li><a href="../multimedia/download-detail.cfm?DL_ID=228" class="kidslink">Print the Saturn lithograph</a>.</li>
+<li><a href="../planets/profile.cfm?Object=Saturn" class="kidslink">See a grown-up version of this page</a>.</li></ul> 
+						
+						</div>
+						
+	        
+					</td></tr></table>
+                    </div>
+				</div>
+			</div>
+			
+ 
+ 	
+		</div>
+		
+		
+	</body>
+</html>
+
