@@ -22,20 +22,45 @@ class Visulization(object):
 
 
         mime_size_diversity = {}
+        jsonObj = {}
+        mimeCount = {}
         for mime in mimeList:
-            jsonObj = {}
+
             print mime[mime.index('/')+1:]
-            for size in self.sizes:
-                query = 'metadata:%s AND size:[%s]' % (mime, size)
+
+            file_size = 0
+            query = 'metadata:%s' % (mime)
+            if 'html' in mime:
+                response = MIME_Core().queryAll(query=query, rows=13000)
+            else:
                 response = MIME_Core().queryAll(query=query)
-                files = response.result.dict['response']['docs']
-                jsonObj[self.size_mapping[size]] = [len(files)]
-            mime_size_diversity[mime] = jsonObj
+            files = response.result.dict['response']['docs']
 
-            out_file = open('data/'+mime[mime.index('/')+1:]+'.json',"w")
+            mimeCount[mime] = len(files)
+            for file in files:
+                file_size += file['size'][0] / float(200000000)
 
-            json.dump(jsonObj,out_file, indent=4)
+            if mimeCount[mime] != 0:
+                jsonObj[mime] = [float(file_size)/mimeCount[mime]]
+            else:
+                jsonObj[mime] = [0]
+        mime_size_diversity[mime] = jsonObj
 
+        output = []
+        for mime, count in jsonObj.iteritems():
+            output.append(count[0])
+
+        out_file = open('data/ratio/ratio.json',"w")
+
+        json.dump({
+            'ratio': output
+        },out_file, indent=4)
+
+        mimeList = []
+        out_file = open('data/ratio/ratio_units.json',"w")
+        for mime, count in mimeCount.iteritems():
+            mimeList.append(mime)
+        json.dump(mimeList,out_file, indent=4)
 
     def addSize(self):
         size = self.extractMIME()
