@@ -40,7 +40,11 @@ class Visulization(object):
                         # Check if one quantity in the line
                         if ';;' not in line:
                             data = line.split('<<>>')
-                            quantity = data[0].strip()
+
+                            try:
+                                quantity = float(data[0].strip())
+                            except ValueError:
+                                continue
                             try:
                                 unit = data[1].strip()
                             except IndexError:
@@ -68,7 +72,7 @@ class Visulization(object):
                                     'min': quantity,
                                     'max': quantity,
                                     'count' : 1,
-                                    'sum': float(quantity)
+                                    'sum': quantity
                                 }
                                 measurement_json[unit] = data
                                 pass
@@ -77,7 +81,7 @@ class Visulization(object):
                             data = line.split(';;')
                             for measurement in data:
                                 data = measurement.split('<<>>')
-                                quantity = data[0].strip()
+                                quantity = float(data[0].strip())
                                 unit = data[1].strip()
 
 
@@ -94,8 +98,8 @@ class Visulization(object):
                                     pass
                                 else:
                                     data = {
-                                        'min': quantity,
-                                        'max': quantity,
+                                        'min': float(quantity),
+                                        'max': float(quantity),
                                         'count' : 1,
                                         'sum': float(quantity)
                                     }
@@ -119,12 +123,34 @@ class Visulization(object):
                 except:
                     # print unit_data
                     pass
+
+            output = {}
+            unitList = []
+            minList = []
+            maxList = []
+            meanList = []
+            for unit, unit_info in final_output.iteritems():
+                unitList.append(unit)
+                minList.append(unit_info['min'])
+                maxList.append(unit_info['max'])
+                meanList.append(unit_info['mean'])
+            print 'The non units are :'
             print non_units
 
-            out_file = open('data/'+mime[mime.index('/')+1:]+'.json',"w")
+            output = {
+                'min': minList,
+                'max' :maxList,
+                'mean' :meanList
+            }
 
-            json.dump(final_output,out_file, indent=4)
 
+            out_file = open('data/measure/'+mime[mime.index('/')+1:]+'.json',"w")
+            json.dump(output,out_file, indent=4)
+
+            out_file = open('data/units/'+mime[mime.index('/')+1:]+'_units.json',"w")
+            json.dump(unitList,out_file, indent=4)
+
+            pass
     def validateUnit(self, unit):
 
         unitMap = {}
