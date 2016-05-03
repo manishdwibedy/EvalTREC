@@ -130,6 +130,9 @@ class Visulization(object):
             maxList = []
             meanList = []
             for unit, unit_info in final_output.iteritems():
+
+                if unit_info['min'] > utility.constant.MAX_MEASURE or unit_info['max'] > utility.constant.MAX_MEASURE or unit_info['mean'] > utility.constant.MAX_MEASURE:
+                    continue
                 unitList.append(unit)
                 minList.append(unit_info['min'])
                 maxList.append(unit_info['max'])
